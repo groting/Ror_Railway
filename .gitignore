@@ -20,4 +20,35 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-/.idea/*
+.idea
+
+/doc/examples
+config/database.yml
+config/private_pub.yml
+
+# Ignore uploaded files
+/public/system
+/public/tmp
+/public/uploads
+/public/spec
+
+# coverage files
+/coverage
+
+.powrc
+
+*.sublime-project
+*.sublime-workspace
+certs/
+
+.yardoc
+/log
+.powenv
+
+# Ignore application configuration
+/config/application.yml
+.zeus.sock
+
+dump.rdb
+config/*.sphinx.conf
+db/sphinx
