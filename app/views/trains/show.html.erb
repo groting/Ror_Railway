@@ -15,29 +15,19 @@
   </li>
   <li>
     <strong>Количество купейных вагонов:</strong>
-    <%= @train.wagons.where("wagon_type == 'Купейный'").count%>
+    <%= @train.wagons_count('Купейный')%>
   </li>
   <li>
     <strong>Количество плацкартных вагонов:</strong>
-    <%= @train.wagons.where("wagon_type == 'Плацкартный'").count%>
+    <%= @train.wagons_count('Плацкартный')%>
   </li>
-  <% low_count_k, low_count_p, high_count_k, high_count_p = 0, 0, 0, 0 %>
-  <% @train.wagons.each do|wagon| %>
-      <% if wagon.wagon_type == 'Купейный' %>
-          <% low_count_k += wagon.low %>
-          <% high_count_k += wagon.high %>
-      <% else %>
-          <% low_count_p += wagon.low %>
-          <% high_count_p += wagon.high %>
-      <% end  %>
-  <% end %>
   <li>
     <strong>Количество мест в купейных вагонах(нижние/верхние):</strong>
-    <%= "#{low_count_k}/#{high_count_k}" %>
+    <%= "#{@train.seats_count('Купейный','Нижние')}/#{@train.seats_count('Купейный','Верхние')}" %>
   </li>
   <li>
     <strong>Количество мест в плацкартных вагонах(нижние/верхние):</strong>
-    <%= "#{low_count_p}/#{high_count_p}" %>
+    <%= "#{@train.seats_count('Плацкартный','Нижние')}/#{@train.seats_count('Плацкартный','Верхние')}" %>
   </li>
 
 </ul>

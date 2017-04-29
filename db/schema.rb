@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 20170425134451) do
   create_table "wagons", force: :cascade do |t|
     t.integer  "train_id_id"
     t.string   "wagon_type"
-    t.integer  "high"
-    t.integer  "low"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "top_seats"
+    t.integer  "bottom_seats"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "train_id"
     t.index ["train_id"], name: "index_wagons_on_train_id"
     t.index ["train_id_id"], name: "index_wagons_on_train_id_id"
