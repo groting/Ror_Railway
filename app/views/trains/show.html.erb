@@ -10,7 +10,7 @@
       Маршрут не назначен
     <%else%>
       <strong>Маршрут:</strong>
-      <%= @train.route.name %>
+      <%= link_to "#{@train.route.name}", @train.route %>
     <%end%>
   </li>
   <li>
@@ -23,14 +23,29 @@
   </li>
   <li>
     <strong>Количество мест в купейных вагонах(нижние/верхние):</strong>
-    <%= "#{@train.seats_count('Купейный','Нижние')}/#{@train.seats_count('Купейный','Верхние')}" %>
+    <%= "#{@train.seats[:second_class_bottom_seats]}/#{@train.seats[:second_class_top_seats]}" %>
   </li>
   <li>
     <strong>Количество мест в плацкартных вагонах(нижние/верхние):</strong>
-    <%= "#{@train.seats_count('Плацкартный','Нижние')}/#{@train.seats_count('Плацкартный','Верхние')}" %>
+    <%= "#{@train.seats[:third_class_bottom_seats]}/#{@train.seats[:third_class_top_seats]}" %>
+  </li>
+  <li>
+    <strong>Количество боковых мест в плацкартных вагонах(нижние/верхние):</strong>
+    <%= "#{@train.seats[:third_class_side_bottom_seats]}/#{@train.seats[:third_class_side_top_seats]}" %>
   </li>
 
 </ul>
+
+<p>
+<strong> Вагоны </strong>
+<ul>
+<% @train.wagons.ordered(@train).each do |wagon| %>
+  <li>
+  <%= link_to "Вагон № #{wagon.number}" , wagon_path(wagon) %>
+  </li>
+  <% end %>
+</ul>
+</p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

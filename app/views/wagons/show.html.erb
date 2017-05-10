@@ -3,20 +3,19 @@
 <p>
   <ul>
   <li>
+    <strong>Номер вагона:</strong>
+    <%= @wagon.number %>
+  </li>
+  <li>
     <strong>Прицеплен к поезду:</strong>
-    <%= @wagon.train.number %>
+    <%=  link_to "#{@wagon.train.number}", @wagon.train %>
   </li>
   <li>
     <strong>Тип вагона:</strong>
-    <%= @wagon.wagon_type %>
+    <%= Wagon::WAGON_TYPES[@wagon.wagon_type] %>
   </li>
   <li>
-    <strong>Количество верхних мест: </strong>
-    <%= @wagon.top_seats %>
-  </li>
-  <li>
-    <strong>Количество нижних мест: </strong>
-    <%= @wagon.bottom_seats %>
+    <%= render @wagon.wagon_type.underscore, wagon: @wagon %>
   </li>
   </ul>
 </p>
