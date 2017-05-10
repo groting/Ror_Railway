@@ -13,6 +13,23 @@
       <%= @train.route.name %>
     <%end%>
   </li>
+  <li>
+    <strong>Количество купейных вагонов:</strong>
+    <%= @train.wagons_count('Купейный')%>
+  </li>
+  <li>
+    <strong>Количество плацкартных вагонов:</strong>
+    <%= @train.wagons_count('Плацкартный')%>
+  </li>
+  <li>
+    <strong>Количество мест в купейных вагонах(нижние/верхние):</strong>
+    <%= "#{@train.seats_count('Купейный','Нижние')}/#{@train.seats_count('Купейный','Верхние')}" %>
+  </li>
+  <li>
+    <strong>Количество мест в плацкартных вагонах(нижние/верхние):</strong>
+    <%= "#{@train.seats_count('Плацкартный','Нижние')}/#{@train.seats_count('Плацкартный','Верхние')}" %>
+  </li>
+
 </ul>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
