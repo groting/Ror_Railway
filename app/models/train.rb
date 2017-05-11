@@ -9,21 +9,11 @@ class Train < ApplicationRecord
     wagons.where(wagon_type:wagon_type).count
   end
 
-   def seats
-    seats = {}
-    wagons.each do |wagon|
-      if wagon.wagon_type == 'Купейный'
-        seats[:second_class_top_seats] = wagon.top_seats
-        seats[:second_class_bottom_seats] = wagon.bottom_seats
-      else
-        seats[:third_class_top_seats] = wagon.top_seats
-        seats[:third_class_bottom_seats] = wagon.bottom_seats
-      end
-    end
-    seats
-    end
-
   def seats_count(wagon_type, seats_type)
     wagons.where(wagon_type:wagon_type).sum(seats_type)
+  end
+
+  def ordered_wagons
+    Wagon.ordered(order)
   end
 end

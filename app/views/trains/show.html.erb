@@ -15,23 +15,23 @@
   </li>
   <li>
     <strong>Количество купейных вагонов:</strong>
-    <%= @train.wagons_count('Купейный')%>
+    <%= @train.wagons_count('SecondClassWagon')%>
   </li>
   <li>
     <strong>Количество плацкартных вагонов:</strong>
-    <%= @train.wagons_count('Плацкартный')%>
+    <%= @train.wagons_count('ThirdClassWagon')%>
   </li>
   <li>
     <strong>Количество мест в купейных вагонах(нижние/верхние):</strong>
-    <%= "#{@train.seats[:second_class_bottom_seats]}/#{@train.seats[:second_class_top_seats]}" %>
+    <%= "#{@train.seats_count('SecondClassWagon', 'bottom_seats')}/#{@train.seats_count('SecondClassWagon', 'top_seats')}" %>
   </li>
   <li>
     <strong>Количество мест в плацкартных вагонах(нижние/верхние):</strong>
-    <%= "#{@train.seats[:third_class_bottom_seats]}/#{@train.seats[:third_class_top_seats]}" %>
+    <%= "#{@train.seats_count('ThirdClassWagon', 'bottom_seats')}/#{@train.seats_count('ThirdClassWagon', 'top_seats')}" %>
   </li>
   <li>
     <strong>Количество боковых мест в плацкартных вагонах(нижние/верхние):</strong>
-    <%= "#{@train.seats[:third_class_side_bottom_seats]}/#{@train.seats[:third_class_side_top_seats]}" %>
+    <%= "#{@train.seats_count('ThirdClassWagon', 'side_bottom_seats')}/#{@train.seats_count('ThirdClassWagon', 'side_top_seats')}" %>
   </li>
 
 </ul>
@@ -39,7 +39,7 @@
 <p>
 <strong> Вагоны </strong>
 <ul>
-<% @train.wagons.ordered(@train).each do |wagon| %>
+<% @train.ordered_wagons.each do |wagon| %>
   <li>
   <%= link_to "Вагон № #{wagon.number}" , wagon_path(wagon) %>
   </li>
