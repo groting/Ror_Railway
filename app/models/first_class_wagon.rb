@@ -1,0 +1,2 @@
+class FirstClassWagon < Wagon
+end

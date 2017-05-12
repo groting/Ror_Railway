@@ -10,15 +10,10 @@ class Train < ApplicationRecord
   end
 
   def seats_count(wagon_type, seats_type)
-    num_of_seats = 0
-    wagons.where(wagon_type:wagon_type).each do |wagon|
-      if seats_type == 'Нижние'
-        num_of_seats += wagon.bottom_seats
-      else
-        num_of_seats += wagon.top_seats
-      end
-    end
-    num_of_seats
+    wagons.where(wagon_type:wagon_type).sum(seats_type)
   end
 
+  def ordered_wagons
+    Wagon.ordered(order)
+  end
 end

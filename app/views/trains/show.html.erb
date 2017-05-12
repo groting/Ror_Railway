@@ -10,27 +10,42 @@
       Маршрут не назначен
     <%else%>
       <strong>Маршрут:</strong>
-      <%= @train.route.name %>
+      <%= link_to "#{@train.route.name}", @train.route %>
     <%end%>
   </li>
   <li>
     <strong>Количество купейных вагонов:</strong>
-    <%= @train.wagons_count('Купейный')%>
+    <%= @train.wagons_count('SecondClassWagon')%>
   </li>
   <li>
     <strong>Количество плацкартных вагонов:</strong>
-    <%= @train.wagons_count('Плацкартный')%>
+    <%= @train.wagons_count('ThirdClassWagon')%>
   </li>
   <li>
     <strong>Количество мест в купейных вагонах(нижние/верхние):</strong>
-    <%= "#{@train.seats_count('Купейный','Нижние')}/#{@train.seats_count('Купейный','Верхние')}" %>
+    <%= "#{@train.seats_count('SecondClassWagon', 'bottom_seats')}/#{@train.seats_count('SecondClassWagon', 'top_seats')}" %>
   </li>
   <li>
     <strong>Количество мест в плацкартных вагонах(нижние/верхние):</strong>
-    <%= "#{@train.seats_count('Плацкартный','Нижние')}/#{@train.seats_count('Плацкартный','Верхние')}" %>
+    <%= "#{@train.seats_count('ThirdClassWagon', 'bottom_seats')}/#{@train.seats_count('ThirdClassWagon', 'top_seats')}" %>
+  </li>
+  <li>
+    <strong>Количество боковых мест в плацкартных вагонах(нижние/верхние):</strong>
+    <%= "#{@train.seats_count('ThirdClassWagon', 'side_bottom_seats')}/#{@train.seats_count('ThirdClassWagon', 'side_top_seats')}" %>
   </li>
 
 </ul>
+
+<p>
+<strong> Вагоны </strong>
+<ul>
+<% @train.ordered_wagons.each do |wagon| %>
+  <li>
+  <%= link_to "Вагон № #{wagon.number}" , wagon_path(wagon) %>
+  </li>
+  <% end %>
+</ul>
+</p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

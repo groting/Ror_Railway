@@ -13,10 +13,23 @@
     <ul>
     <% @route.trains.each do |train| %>
       <li>
-        <%= train.number %>
+        <%= link_to "#{train.number}", train %>
       </li>
     <% end %>
     </ul>
+  <% end %>
+</p>
+
+<p>
+  <strong>Станции маршрута: </strong>
+  <% if @route.railway_stations.empty? %>
+    Станций в маршруте нет
+  <% else %>
+    <ul>
+    <% @route.railway_stations_routes.ordered.each do |station_in_route| %>
+      <li>
+      <%= link_to "#{station_in_route.station_index} #{station_in_route.railway_station.name}", station_in_route.railway_station %>
+    <% end %>
   <% end %>
 </p>
 

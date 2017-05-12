@@ -1,0 +1,2 @@
+class CouchWagon < Wagon
+end

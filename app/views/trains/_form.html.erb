@@ -11,6 +11,11 @@
     <%= f.collection_select :current_station_id, RailwayStation.all, :id, :name %>
   </div>
 
+  <div class="field">
+    <%= f.label :order, "Нумерация вагонов:" %>
+    <%= f.select(:order, options_for_select([['C головы', true], ['C хвоста', false]])) %>
+  </div>
+
    <div class="field">
     <%= f.label :route, 'Маршрут' %>
     <%= f.collection_select :route_id, Route.all, :id, :name %>
