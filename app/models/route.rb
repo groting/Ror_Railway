@@ -9,6 +9,10 @@ class Route < ApplicationRecord
   has_many :railway_stations, through: :railway_stations_routes
 
   has_many :trains
+
+  def station_time(station, method)
+    railway_stations_routes.where(route_id: id, railway_station_id: station.id).first.send(method)
+  end
   
   private
 

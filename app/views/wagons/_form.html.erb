@@ -1,10 +1,5 @@
-<%= form_for(wagon.becomes(Wagon)) do |f| %>
+<%= form_for [@train, @wagon.becomes(Wagon)] do |f| %>
     <%= render 'common/errors', resource: @wagon %>
-
-    <div class="field">
-      <%= f.label :train, 'Поезд' %>
-      <%= f.collection_select :train_id, Train.all, :id, :number %>
-    </div>
 
     <div class="field">
     <strong> Тип вагона: </strong>
