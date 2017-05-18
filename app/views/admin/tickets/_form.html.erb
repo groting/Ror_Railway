@@ -1,0 +1,35 @@
+<%= form_for [:admin, @ticket] do |f| %>
+  <div class="field">
+    <%= f.label :user_id, "Пользователь:" %>
+    <%= f.collection_select :user_id, User.all, :id, :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :train_id, "Поезд:" %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_station_id, "Начальная станция:" %>
+    <%= f.collection_select :first_station_id, RailwayStation.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_station_id, "Конечная станция:" %>
+    <%= f.collection_select :last_station_id, RailwayStation.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passenger_name, "ФИО:" %>
+    <%= f.text_field :passenger_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passport_number, 'Номер паспорта:' %>
+    <%= f.text_field :passport_number %>
+  </div>
+
+  <div class="field">
+    <%= f.submit 'Купить' %>
+  </div>
+<% end %>

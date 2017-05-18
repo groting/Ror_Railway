@@ -9,7 +9,21 @@
   </head>
 
   <body>
+   
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <p>
+    <% if user_signed_in? %>
+    <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
+       Привет <%= current_user.first_name %> ! 
+    <% else %>
+      <%= link_to "Войти", new_user_session_path %>
+    <% end %>
+    </p>
+
     <%= yield %>
+
     <p>2017. Кулеш Владислав. Учебный проект в
     <%=  link_to 'онлайн школе Thinknetica', 'http://www.thinknetica.com/' %>
     </p>

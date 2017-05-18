@@ -1,10 +1,9 @@
-class TicketsController < ApplicationController
+class Admin::TicketsController < Admin::BaseController
 before_action :authenticate_user!
-before_action :set_ticket, only: [:show, :destroy]
-before_action :set_train, only: [:new]
+before_action :set_ticket, only: [:show, :destroy, :edit, :update]
 
   def index
-   @tickets = current_user.tickets
+   @tickets = Ticket.all
   end
 
   def new
@@ -14,8 +13,19 @@ before_action :set_train, only: [:new]
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @ticket.update(ticket_params)
+     redirect_to admin_tickets_path, notice: 'Билет был успешно изменен'
+    else
+      render :edit
+    end
+  end
+
   def create
-    @ticket = current_user.tickets.new(ticket_params)
+    @ticket = Ticket.new(ticket_params)
     
     if @ticket.save
       redirect_to ticket_path(@ticket)
@@ -36,11 +46,7 @@ before_action :set_train, only: [:new]
     :first_station_id, :last_station_id, :train_id)
   end
 
-  def set_train
-    @train = Train.find(params[:train_id])
-  end
-
   def set_ticket
-  @ticket = current_user.tickets.find(params[:id])
+  @ticket = Ticket.find(params[:id])
   end
 end

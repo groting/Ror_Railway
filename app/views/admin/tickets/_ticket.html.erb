@@ -1,0 +1,10 @@
+<tr>
+  <td><%= link_to "#{ticket.id}", [:admin, ticket] %></td>
+  <td><%= ticket.train.route.name %></td>
+  <td><%= ticket.train.number %></td>
+  <td><%= ticket.user.email %></td>
+  <td><%= ticket.passenger_name %></td>
+  <td><%= ticket.passport_number %></td>
+  <td><%= link_to "Изменить", edit_admin_ticket_path(ticket) %></td>
+  <td><%= link_to "Удалить", [:admin, ticket], method: :delete %></td>
+</tr>

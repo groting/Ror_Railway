@@ -1,0 +1,53 @@
+<ul>
+  <li>
+  <strong>Номер:</strong>
+  <%= @train.number %>
+  </li>
+  <li>
+  <% if @train.route.nil? %>
+      Маршрут не назначен
+    <%else%>
+      <strong>Маршрут:</strong>
+      <%= link_to "#{@train.route.name}", [:admin, @train.route] %>
+    <%end%>
+  </li>
+  <li>
+    <strong>Количество купейных вагонов:</strong>
+    <%= @train.wagons_count('SecondClassWagon')%>
+  </li>
+  <li>
+    <strong>Количество плацкартных вагонов:</strong>
+    <%= @train.wagons_count('ThirdClassWagon')%>
+  </li>
+  <li>
+    <strong>Количество мест в купейных вагонах(нижние/верхние):</strong>
+    <%= "#{@train.seats_count('SecondClassWagon', 'bottom_seats')}/#{@train.seats_count('SecondClassWagon', 'top_seats')}" %>
+  </li>
+  <li>
+    <strong>Количество мест в плацкартных вагонах(нижние/верхние):</strong>
+    <%= "#{@train.seats_count('ThirdClassWagon', 'bottom_seats')}/#{@train.seats_count('ThirdClassWagon', 'top_seats')}" %>
+  </li>
+  <li>
+    <strong>Количество боковых мест в плацкартных вагонах(нижние/верхние):</strong>
+    <%= "#{@train.seats_count('ThirdClassWagon', 'side_bottom_seats')}/#{@train.seats_count('ThirdClassWagon', 'side_top_seats')}" %>
+  </li>
+
+</ul>
+
+<p>
+<strong> Вагоны </strong>
+<ul>
+<% @train.ordered_wagons.each do |wagon| %>
+  <li>
+  <%= link_to "Вагон № #{wagon.number}" , admin_wagon_path(wagon) %>
+  </li>
+  <% end %>
+</ul>
+</p>
+
+<p>
+  <%= link_to "Добавить вагон", new_admin_train_wagon_path(@train) %>
+</p>
+
+<%= link_to 'Edit', edit_admin_train_path(@train) %> |
+<%= link_to 'Back', admin_trains_path %>

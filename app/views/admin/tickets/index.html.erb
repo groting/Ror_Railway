@@ -1,0 +1,18 @@
+<h1> Билеты: </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th> Номер </th>
+      <th> Маршрут </th>
+      <th> Поезд № </th>
+      <th> Пользователь </th>
+      <th> ФИО </th>
+      <th> Паспорт </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @tickets %>
+    <%= link_to "Новый билет", new_admin_ticket_path %>
+  </tbody>
+</table>
