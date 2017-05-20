@@ -47,6 +47,6 @@ before_action :set_ticket, only: [:show, :destroy, :edit, :update]
   end
 
   def set_ticket
-  @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.find(params[:id])
   end
 end
