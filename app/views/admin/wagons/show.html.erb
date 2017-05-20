@@ -1,0 +1,21 @@
+<p>
+  <ul>
+  <li>
+    <strong>Номер вагона:</strong>
+    <%= @wagon.number %>
+  </li>
+  <li>
+    <strong>Прицеплен к поезду:</strong>
+    <%=  link_to "#{@wagon.train.number}", [:admin, @wagon].train %>
+  </li>
+  <li>
+    <strong>Тип вагона:</strong>
+    <%= Wagon::WAGON_TYPES[@wagon.wagon_type] %>
+  </li>
+  <li>
+    <%= render @wagon.wagon_type.underscore, wagon: @wagon %>
+  </li>
+  </ul>
+</p>
+
+<%= link_to 'Назад', [:admin, @wagon].train %>

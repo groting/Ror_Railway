@@ -1,23 +1,32 @@
 class TicketsController < ApplicationController
-before_action :set_train, only: [:new, :purchase]
+before_action :authenticate_user!
+before_action :set_ticket, only: [:show, :destroy]
+before_action :set_train, only: [:new]
+
+  def index
+   @tickets = current_user.tickets
+  end
 
   def new
     @ticket = Ticket.new
   end
 
   def show
-    @ticket = Ticket.find(params[:id])
   end
 
   def create
-    user = User.first
-    @ticket = Ticket.new(ticket_params)
-    @ticket.user = user
+    @ticket = current_user.tickets.new(ticket_params)
+    
     if @ticket.save
       redirect_to ticket_path(@ticket)
     else
       redirect_to search_path
     end
+  end
+
+  def destroy
+    @ticket.destroy
+    redirect_to tickets_path
   end
 
   private
@@ -29,5 +38,9 @@ before_action :set_train, only: [:new, :purchase]
 
   def set_train
     @train = Train.find(params[:train_id])
+  end
+
+  def set_ticket
+  @ticket = current_user.tickets.find(params[:id])
   end
 end

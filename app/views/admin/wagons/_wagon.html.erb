@@ -1,0 +1,8 @@
+
+  <tr>
+  <td><%= link_to "#{wagon.number}", admin_wagon_path(wagon)  %></td>
+  <td><%= link_to "#{wagon.train.number}", [:admin, wagon].train  %></td>
+  <td><%= link_to 'Показать', [:admin, wagon] %></td>
+  <td><%= link_to 'Редактировать', edit_admin_wagon_path(wagon) %></td>
+  <td><%= link_to 'Удалить', [:admin, wagon], method: :delete, data: { confirm: 'Вы уверенны?' } %></td>
+  </tr>
