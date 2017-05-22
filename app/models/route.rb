@@ -22,7 +22,7 @@ class Route < ApplicationRecord
 
   def stations_count
     if railway_stations.size < 2
-      errors.add(:base, t('route.errors.stations_count'))
+      errors.add(:base, t('routes.errors.stations_count'))
     end
   end
 end
