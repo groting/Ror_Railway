@@ -1,0 +1,50 @@
+ru:
+  common:
+    back: 'Назад'
+    errors: 'При заполнении формы возникли ошибки'
+    show: 'Показать'
+    edit: 'Редактировать'
+    delete: 'Удалить'
+    sure: 'Вы уверенны?'
+  admin:
+    railway_stations:
+      new:
+        title: 'Новая станция'
+      form:
+        submit: '%{action} станцию' 
+      edit:
+        title: 'Редактирование станции'
+      index:
+        title: 'Железнодорожные станции'
+        name: 'Название'
+        new_station: 'Создать новую станцию'
+      show:
+        name: 'Название:'
+    routes:
+      form:
+        submit: '%{action} маршрут'
+        stations: 'Станции'
+      errors:
+        stations_count: 'В маршруте должно быть больше 2 станций'
+      edit:
+        title: 'Редактировать маршрут'
+      index:
+        title: 'Маршруты'
+        name: 'Название:'
+        new_route: 'Создать новый маршрут'
+      new:
+        title: 'Новый маршрут'
+      show:
+        name: 'Название:'
+        train_in_route: 'Поезда на маршруте'
+        no_train: 'Поездов на маршруте нет'
+        route_stations: 'Станции маршрута'
+        no_station: 'Станций в маршруте нет'
+        station_name: 'Название:'
+        position: 'Позиция'
+        arrive_time: 'Время прибытия'
+        depart_time: 'Время отправления'
+        change: 'Изменить'
+
+
+
