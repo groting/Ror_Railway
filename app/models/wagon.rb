@@ -5,7 +5,7 @@ class Wagon < ApplicationRecord
 
   before_validation :set_number
 
-  scope :ordered, ->(sort_order) { sort_order ? order(:number) : order(number: :desc) }
+  scope :ordered, ->(sort_order) { sort_order ? select('*, wagons').order(:number) : select('*, wagons').order(number: :desc) }
 
   SV_TYPE = 'СВ'
   COUPE_TYPE = 'Купейный'
