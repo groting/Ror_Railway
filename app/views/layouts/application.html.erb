@@ -50,8 +50,9 @@
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
               <li><%= link_to "Выйти", destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to "Мои билеты", tickets_path %></li>
               <% if current_user.admin? %>
-                <li><%= link_to "Админка", admin_railway_stations_path %></li>
+                <li><%= link_to "Админка", admin_welcome_index_path %></li>
               <% end %>
             <% else %>
               <li><%= link_to "Войти", new_user_session_path %></li>

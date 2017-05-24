@@ -1,7 +1,21 @@
 <h1> Купленные билеты: </h1>
 
-<% @tickets.each do |ticket| %>
-<p> Билет № <%= #{ link_to "#{ticket.id}", admin_ticket_path(ticket)} %>
-+ На имя: <%= #{ticket.passenger_name} %>
-+ Поезд № <%= #{ticket.train.number}
-+ #{ link_to 'Удалить', [:admin, ticket], method: :delete} %> </p>
+<table>
+  <thead>
+  <tr>
+    <th>Номер билета</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.name %></td>
+        <td><%= link_to t('common.show'), ticket %></td>
+        <td><%= link_to t('common.edit'), edit_ticket_path(rticket) %></td>
+        <td><%= link_to t('common.delete'), ticket, method: :delete, data: { confirm: t('common.sure') } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
