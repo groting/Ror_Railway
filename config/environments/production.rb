@@ -72,19 +72,15 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { host: 'evening-dusk-37764.herokuapp.com'}  
-  config.action_mailer.delivery_method = :smtp  
-  config.action_mailer.perform_deliveries = true  
-  config.action_mailer.raise_delivery_errors = true  
-  config.action_mailer.default :charset => "utf-8"  
-  config.action_mailer.smtp_settings = {  
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "heroku.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
-  }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address: "smtp.sendgrid.net",
+  port: "587",
+  domain: "heroku.com",
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: ENV["SENDGRID_USERNAME"],
+  password: ENV["SENDGRID_PASSWORD"]
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
