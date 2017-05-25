@@ -81,6 +81,7 @@ Rails.application.configure do
   enable_starttls_auto: true,
   user_name: ENV["SENDGRID_USERNAME"],
   password: ENV["SENDGRID_PASSWORD"]
+  }
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
