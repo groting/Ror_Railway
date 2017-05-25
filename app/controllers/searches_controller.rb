@@ -6,9 +6,9 @@ class SearchesController < ApplicationController
   end
 
   def create
-    @trains = Search.trains(params[:first_station], params[:last_station])
-    @first_station = RailwayStation.find(params[:first_station])
-    @last_station = RailwayStation.find(params[:last_station])
+    @trains = Search.trains(params[:first_station_id], params[:last_station_id])
+    @first_station = RailwayStation.find(params[:first_station_id])
+    @last_station = RailwayStation.find(params[:last_station_id])
     render :show
   end
 

@@ -9,10 +9,6 @@ class Ticket < ApplicationRecord
   after_create :send_notification_create
   before_destroy :send_notification_destroy
 
-  def route_name
-    "#{first_station.name} - #{last_station.name}"
-  end
-
   private
   
   def send_notification_create

@@ -3,11 +3,11 @@
 <div class="row">
   <%= form_tag search_path do %>
     <div class="col-md-4">
-       <%= select_tag :first_station, options_from_collection_for_select(@railway_stations, :id, :name), class: 'form-control' %>
+       <%= select_tag :first_station_id, options_from_collection_for_select(@railway_stations, :id, :name), class: 'form-control' %>
     </div>
 
     <div class="col-md-4">
-    <%= select_tag :last_station, options_from_collection_for_select(@railway_stations, :id, :name), class: 'form-control' %>
+    <%= select_tag :last_station_id, options_from_collection_for_select(@railway_stations, :id, :name), class: 'form-control' %>
     </div>
 
     <div class="col-md-4">
@@ -30,7 +30,7 @@
               <td> <%= train.route.name %> </td>
               <td> <%= train.route.station_time(@first_station, :depart_time) %> </td>
               <td> <%= train.route.station_time(@last_station, :arrive_time) %> </td>
-              <td> <%= link_to 'Купить', new_ticket_path(train_id: train.id, first_station_id: @first_station.id, last_station_id: @last_station.id) %> </td>
+              <td> <%= link_to 'Купить', new_ticket_path(train_id: train.id, first_station_id: @first_station.id, last_station_id: @last_station) %> </td>
             </tr>
           <% end %>
         </tbody>
