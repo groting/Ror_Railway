@@ -13,6 +13,10 @@ class Route < ApplicationRecord
   def station_time(station, method)
     railway_stations_routes.where(route_id: id, railway_station_id: station.id).first.send(method)
   end
+
+  def update_name(name)
+    self.update(name: name) if self
+  end
   
   private
 

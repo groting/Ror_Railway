@@ -1,7 +1,7 @@
 <h1> Поиск билета </h1>
 
 <div class="row">
-  <%= form_tag search_path do %>
+  <%= form_tag search_path, class: 'search_form' do %>
     <div class="col-md-4">
        <%= select_tag :first_station_id, options_from_collection_for_select(@railway_stations, :id, :name), class: 'form-control' %>
     </div>

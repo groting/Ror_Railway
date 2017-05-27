@@ -1,5 +1,5 @@
 class Admin::TrainsController < Admin::BaseController
-  before_action :set_train, only: [:show, :edit, :update, :destroy]
+  before_action :set_train, only: [:show, :edit, :update, :destroy, :update_number]
 
   def index
     @trains = Train.all
@@ -25,11 +25,16 @@ class Admin::TrainsController < Admin::BaseController
   end
 
   def update
-      if @train.update(train_params)
-        redirect_to [:admin, @train], notice: 'Train was successfully updated.'       
-      else
-        render :edit 
-      end
+    if @train.update(train_params)
+      redirect_to [:admin, @train], notice: 'Train was successfully updated.'       
+    else
+      render :edit 
+    end
+  end
+
+  def update_number
+    @train.update_number(params[:number])
+    redirect_to admin_trains_path
   end
 
   def destroy

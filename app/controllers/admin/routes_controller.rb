@@ -1,5 +1,5 @@
 class Admin::RoutesController < Admin::BaseController
-  before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :set_route, only: [:show, :edit, :update, :destroy, :update_name]
 
   def index
     @routes = Route.all
@@ -31,6 +31,11 @@ class Admin::RoutesController < Admin::BaseController
       else
         render :edit 
       end
+  end
+
+   def update_name
+    @route.update_name(params[:name])
+    redirect_to admin_routes_path
   end
 
   def destroy
