@@ -11,10 +11,20 @@
   <tbody>
   <% @routes.each do |route| %>
       <tr>
-        <td><%= route.name %></td>
+        <td>
+          <div id="route_name_<%= route.id %>">
+            <%= link_to "#{route.name}", '', class: 'edit_route_name', data: { route_id: route.id }%>
+          </div>
+          <div id="edit_route_name_<%= route.id %>" style="display: none;">
+            <%= form_tag update_name_admin_route_path(route), method: :patch do %>
+             <%= text_field_tag :name %>
+             <%= submit_tag 'Изменить'%>
+            <% end %>
+          </div>
+          </td>
         <td><%= link_to t('common.show'), [:admin, route] %></td>
         <td><%= link_to t('common.edit'), edit_admin_route_path(route) %></td>
-        <td><%= link_to t('common.back'), [:admin, route], method: :delete, data: { confirm: t('common.sure') } %></td>
+        <td><%= link_to t('common.delete'), [:admin, route], method: :delete, data: { confirm: t('common.sure') } %></td>
       </tr>
   <% end %>
   </tbody>

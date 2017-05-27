@@ -4,28 +4,28 @@
     <div class="field">
     <strong> Тип вагона: </strong>
     <% if wagon.new_record? %>
-      <%= f.collection_select :wagon_type, Wagon::WAGON_TYPES, :first, :last  %>
+      <%= f.collection_select :wagon_type, Wagon::WAGON_TYPES, :first, :last, {}, {:class=>'wagon_type_select'}  %>
     <% else %>
       <%= Wagon::WAGON_TYPES[wagon.wagon_type] %>
       <% end %>
     </div>
 
-    <div class="field">
+    <div class="field" id="top_seats" style="display: none;">
       <%= f.label :top_seats, 'Количество верхних мест' %>
       <%= f.number_field :top_seats %>
     </div>
 
-    <div class="field">
+    <div class="field" id="bottom_seats">
       <%= f.label :bottom_seats, 'Количество нижних мест' %>
       <%= f.number_field :bottom_seats %>
     </div>
 
-    <div class="field">
+    <div class="field" id="side_top_seats" style="display: none;">
       <%= f.label :side_top_seats, 'Количество верхних боковых мест' %>
       <%= f.number_field :side_top_seats %>
     </div>
 
-    <div class="field">
+    <div class="field" id="side_bottom_seats" style="display: none;">
       <%= f.label :side_bottom_seats, 'Количество нижних боковых мест' %>
       <%= f.number_field :side_bottom_seats %>
     </div>

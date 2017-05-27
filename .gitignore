@@ -52,3 +52,4 @@ certs/
 dump.rdb
 config/*.sphinx.conf
 db/sphinx
+sendgrid.env
