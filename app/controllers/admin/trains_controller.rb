@@ -33,7 +33,7 @@ class Admin::TrainsController < Admin::BaseController
   end
 
   def update_number
-    @train.update_number(params[:number])
+    @train.update(number: params[:number])
     redirect_to admin_trains_path
   end
 
