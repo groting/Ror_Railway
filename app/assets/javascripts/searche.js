@@ -7,8 +7,6 @@ $(document).ready(function() {
        last_station = $(this).find('#last_station_id');
 
        if (first_station.val() == last_station.val()) {
-          console.log(first_station.val());
-          console.log(last_station.val());
           alert('Выберите конечную станцию');
           return false;
        }
