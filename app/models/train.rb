@@ -15,10 +15,6 @@ class Train < ApplicationRecord
     wagons.where(wagon_type:wagon_type).sum(seats_type)
   end
 
-  def update_number(number)
-    self.update(number: number) if self
-  end
-
   def ordered_wagons
     Wagon.ordered(order)
   end
